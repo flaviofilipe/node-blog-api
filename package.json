@@ -1,9 +1,9 @@
 {
   "name": "node-challenge-001",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Node challenge 001",
   "repository": "https://github.com/JungleDevs/node-challenge-001",
-  "author": "Vinicius de Morais Justo",
+  "author": "Flávio Filipe",
   "license": "MIT",
   "private": false,
   "engineStrict": true,
@@ -11,18 +11,24 @@
     "node": "12"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon --watch src --exec babel-node src/app.js"
+    "dev": "cross-env NODE_ENV=development nodemon --watch src --exec babel-node src/app.js",
+    "test": "jest",
+    "test-clearcache": "jest --clearCache",
+    "knex:migrate": "knex migrate:latest",
+    "knex:seed": "knex seed:run"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/node": "^7.12.6",
     "cross-env": "^7.0.3",
+    "jest": "^27.3.1",
     "nodemon": "^2.0.6"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "knex": "^0.21.12",
-    "objection": "^2.2.3",
-    "pg": "^8.5.1"
+    "faker": "^5.5.3",
+    "knex": "^0.21.21",
+    "objection": "^2.2.17",
+    "pg": "^8.7.1"
   }
 }
