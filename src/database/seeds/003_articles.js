@@ -9,18 +9,20 @@ exports.seed = function (knex) {
         {
           id: 1,
           title: faker.lorem.words(10),
-          sumary: faker.lorem.words(10),
+          summary: faker.lorem.words(10),
           firstParagraph: faker.lorem.words(20),
           body: faker.lorem.paragraph(),
-          category_id: 1
+          category_id: 1,
+          author_id: 1
         },
         {
           id: 2,
           title: faker.lorem.words(10),
-          sumary: faker.lorem.words(10),
+          summary: faker.lorem.words(10),
           firstParagraph: faker.lorem.words(20),
           body: faker.lorem.paragraph(),
-          category_id: 2
+          category_id: 2,
+          author_id: 2
         }
       ]);
     });

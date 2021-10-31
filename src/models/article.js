@@ -2,6 +2,7 @@ const { Model } = require('objection');
 const knex = require('../adapters/db/knex-config-adapter');
 
 const Category = require('./category')
+const Author = require('./author')
 
 Model.knex(knex)
 
@@ -17,12 +18,12 @@ class Article extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['name', 'pictureUrl'],
+      required: ['title', 'summary', 'firstParagraph', 'body'],
 
       properties: {
         id: { type: 'integer' },
         tltle: { type: 'string', minLength: 1, maxLength: 255 },
-        sumary: { type: 'string', minLength: 1, maxLength: 255 },
+        summary: { type: 'string', minLength: 1, maxLength: 255 },
         firstParagraph: { type: 'string' },
         body: { type: 'string' },
       },
@@ -31,11 +32,20 @@ class Article extends Model {
 
   static relationMappings = {
     category: {
-      relation: Model.HasOneRelation,
+      relation: Model.BelongsToOneRelation,
       modelClass: Category,
       join: {
-        from: 'articles.categoryId',
-        to: 'category.id'
+        from: 'articles.category_id',
+        to: 'categories.id'
+      },
+    },
+
+    author: {
+      relation: Model.BelongsToOneRelation,
+      modelClass: Author,
+      join: {
+        from: 'articles.author_id',
+        to: 'authors.id'
       }
     }
   }

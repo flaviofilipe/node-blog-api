@@ -7,6 +7,11 @@ exports.seed = knex => {
         id: 1,
         name: 'author teste',
         pictureUrl: 'image.jpg',
+      },
+      {
+        id: 2,
+        name: 'author 2',
+        pictureUrl: 'image.jpg',
       }
     ]));
 };

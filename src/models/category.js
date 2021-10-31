@@ -5,7 +5,7 @@ Model.knex(knex)
 
 class Category extends Model {
   static get tableName() {
-    return 'category';
+    return 'categories';
   }
 
   static get jsonSchema() {

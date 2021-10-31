@@ -3,13 +3,13 @@ class Repository {
         this.dbAdapter = dbAdapter
     }
 
-    async all(item) {
-        const response = this.dbAdapter.all(item)
+    async all(select) {
+        const response = this.dbAdapter.all(select)
         return response
     }
 
-    async getById(itemId) {
-        const response = this.dbAdapter.getById(itemId)
+    async getById(itemId, select) {
+        const response = this.dbAdapter.getById(itemId, select)
         return response
     }
 
@@ -18,8 +18,8 @@ class Repository {
         return response
     }
 
-    async update(item) {
-        const response = this.dbAdapter.update(item)
+    async update(id, data) {
+        const response = this.dbAdapter.update(id, data)
         return response
     }
 

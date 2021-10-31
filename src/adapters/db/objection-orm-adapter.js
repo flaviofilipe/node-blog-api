@@ -1,17 +1,35 @@
 
 class ObjectionOrmAdapter {
-  constructor(model){
+  constructor(model) {
     this.model = model
   }
 
-  async all() {
+  async all(select, join) {
     const response = this.model.query()
-    return response
+
+    if (select) {
+      response.select(select)
+    }
+
+    if(join){
+      response.joinRelated(join)
+    }
+
+    return await response
   }
 
-  async getById(itemId) {
-    const response = await this.model.query().findById(itemId)
-    return response
+  async getById(itemId, select, join) {
+    const response = this.model.query().findById(itemId)
+
+    if (select) {
+      response.select(select)
+    }
+    
+    if(join){
+      response.joinRelated(join)
+    }
+
+    return await response
   }
 
   async create(item) {
@@ -19,15 +37,23 @@ class ObjectionOrmAdapter {
     return response
   }
 
-  async update(item) {
+  async update(id, data) {
     const response = await this.model.query()
-      .findById(item.id)
-      .patch(item);
+      .findById(id)
+      .patch(data);
+    
     return response
   }
 
   async remove(itemId) {
     const response = await this.model.query().deleteById(itemId)
+    return response
+  }
+
+  async findUserByEmail(email) {
+    const response = await this.model.query()
+      .where('email', email)
+      .limit(1)
     return response
   }
 }
