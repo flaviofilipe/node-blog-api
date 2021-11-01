@@ -17,8 +17,6 @@ class AuthRepository {
 
   async findUserByEmailAndPassword(email, password) {
     const user = await this.dbAdapter.findUserByEmail(email)
-    console.log(user)
-    console.log('password', password)
 
     if (!user[0]) return false
 
