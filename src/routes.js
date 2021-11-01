@@ -4,8 +4,7 @@ const { authenticatedMiddleware, onlyAdminUser } = require('./middlewares/auth')
 
 const { AuthorsController, ArticlesController, Auth } = require('./controllers')
 
-
-routes.route('/authors')
+routes.route('/api/authors')
   .get(onlyAdminUser, AuthorsController.index)
   .post(onlyAdminUser, onlyAdminUser, AuthorsController.create)
 routes.route('/authors/:id')
@@ -13,7 +12,7 @@ routes.route('/authors/:id')
   .delete(onlyAdminUser, AuthorsController.remove)
   .get(onlyAdminUser, AuthorsController.find)
 
-routes.route('/articles')
+routes.route('/api/articles')
   .get(ArticlesController.index)
   .post(onlyAdminUser, ArticlesController.create)
 routes.route('/articles/:id')
@@ -21,7 +20,7 @@ routes.route('/articles/:id')
   .delete(onlyAdminUser, ArticlesController.remove)
   .get(authenticatedMiddleware, ArticlesController.find)
 
-routes.post('/login', Auth.login)
-routes.post('/sign-up', Auth.register)
+routes.post('/api/login', Auth.login)
+routes.post('/api/sign-up', Auth.register)
 
 module.exports = routes
