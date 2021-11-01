@@ -1,8 +1,6 @@
 
 # Node API Blog
 
-  
-
 ## Description
 
   This is a blog backend API made with NodeJs, Express.js and [Objection.js](https://vincit.github.io/objection.js/)
@@ -29,7 +27,20 @@ npm i
 docker-compose up -d
 ```
 
-**Run API**
+**Migrate Database**
+```
+npm run knex:migrate
+```
+
+**Seed Database**
+```
+npm run knex:seed
+```
+
+> :warning: **This command will delete all data and create it again**: Be very careful here!
+
+
+**Run API on localhost:8000**
 ```
 npm run dev
 ```
