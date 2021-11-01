@@ -2,7 +2,7 @@
   "name": "node-challenge-001",
   "version": "2.0.0",
   "description": "Node challenge 001",
-  "repository": "https://github.com/JungleDevs/node-challenge-001",
+  "repository": "https://github.com/flaviofilipe/node-blog-api",
   "author": "Flávio Filipe",
   "license": "MIT",
   "private": false,
