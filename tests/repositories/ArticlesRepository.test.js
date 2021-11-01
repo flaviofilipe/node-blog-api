@@ -7,7 +7,7 @@ const repository = new ArticlesRepository(database)
 
 describe('ArticlesRepository', () => {
     test('should get all articles', async () => {
-        const articles = await repository.all()
+        const articles = await repository.all({category: null})
         expect(articles.length).toBe(3)
     })
     test('should get article by id', async () => {
