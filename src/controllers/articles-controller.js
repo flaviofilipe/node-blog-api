@@ -8,7 +8,8 @@ const repository = new ArticlesRepository(objectionOrmAdapter)
 
 
 const index = async (req, res) => {
-  const response = await repository.all()
+  const { category } = req.query
+  const response = await repository.all({category})
   return res.json(response);
 }
 
@@ -27,7 +28,7 @@ const update = async (req, res) => {
   const data = req.body
   try {
     const response = await repository.update(id, data)
-    
+
     if (!response)
       return res.sendStatus(404)
 
@@ -40,7 +41,7 @@ const update = async (req, res) => {
 const remove = async (req, res) => {
   try {
     const response = await repository.remove(req.params.id)
-    
+
     if (!response)
       return res.sendStatus(404)
 
@@ -52,8 +53,8 @@ const remove = async (req, res) => {
 
 const find = async (req, res) => {
   const response = await repository.getById(req.params.id, req.user)
-  
-  if(!response){
+
+  if (!response) {
     return res.sendStatus(404)
   }
 

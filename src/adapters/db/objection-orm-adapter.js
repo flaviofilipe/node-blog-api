@@ -4,7 +4,13 @@ class ObjectionOrmAdapter {
     this.model = model
   }
 
-  async all(select, join) {
+  /**
+   * @param string select 
+   * @param string join 
+   * @param array filter [table.column, operator, data]
+   * @returns 
+   */
+  async all(select, join, filter) {
     const response = this.model.query()
 
     if (select) {
@@ -13,6 +19,10 @@ class ObjectionOrmAdapter {
 
     if(join){
       response.joinRelated(join)
+    }
+
+    if(filter){
+      response.where(filter[0], filter[1], filter[2])
     }
 
     return await response
