@@ -1,7 +1,7 @@
 const Respository = require('./repository')
 
 class ArticlesRepository extends Respository {
-  async all(user) {
+  async all() {
     const join = '[category as c, author as a]'
     const select = [
       'c.name as category',

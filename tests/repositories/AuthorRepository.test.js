@@ -16,7 +16,7 @@ describe('AuthorRepository', () => {
     })
     test('should not found author by id', async () => {
         const author = await repository.getById(2)
-        expect(author).toEqual({})
+        expect(author).toEqual(false)
     })
     test('should create author ', async () => {
         const params = {
@@ -32,14 +32,10 @@ describe('AuthorRepository', () => {
             pictureUrl: "img.png"
         }
         const author = await repository.update(params)
-        expect(author.name).toBe('updated!')
+        expect(author).toBe(true)
     })
     test('should delete author ', async () => {
-        const params = {
-            name: "author 1",
-            pictureUrl: "img.png"
-        }
-        const author = await repository.remove(params)
+        const author = await repository.remove(1)
         expect(author).toBe(1)
     })
 })

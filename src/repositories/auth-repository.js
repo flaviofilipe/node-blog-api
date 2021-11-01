@@ -17,6 +17,8 @@ class AuthRepository {
 
   async findUserByEmailAndPassword(email, password) {
     const user = await this.dbAdapter.findUserByEmail(email)
+    console.log(user)
+    console.log('password', password)
 
     if (!user[0]) return false
 
@@ -27,18 +29,17 @@ class AuthRepository {
   }
 
   generateToken(user) {
-    return jwt.sign({ 
+    return jwt.sign({
       id: user.id,
       is_admin: user.is_admin,
       email: user.email
-     }, process.env.SECRET, {
+    }, process.env.SECRET, {
       expiresIn: process.env.JWT_EXPIRE
     });
   }
 
-  async register(data){
-    const user = await this.dbAdapter.create(data)
-    return user
+  async register(data) {
+    return data
   }
 }
 

@@ -10,7 +10,7 @@ class PgAdapterSpy {
     async getById(id) {
         if (id == 1)
             return { id: 1 }
-        return {}
+        return false
     }
 
     async create(data) {
@@ -19,9 +19,7 @@ class PgAdapterSpy {
     }
 
     async update(data) {
-        data.id = 1
-        data.name = 'updated!'
-        return data
+        return true
     }
 
     async remove(data) {

@@ -23,8 +23,8 @@ class Repository {
         return response
     }
 
-    async remove(item) {
-        const response = this.dbAdapter.remove(item)
+    async remove(itemId) {
+        const response = this.dbAdapter.remove(itemId)
         return response
     }
 }
