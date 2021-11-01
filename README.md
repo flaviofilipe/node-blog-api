@@ -60,3 +60,13 @@ npm run dev
 | GET | /api/admin/articles/:id|
 | PUT | /api/admin/articles/:id |
 | DELETE | /api/admin/articles/:id|
+
+
+## Testing Endpoints
+**Using Postman**
+- Requires [Postman](https://www.postman.com/)
+- Import the [postman_collection](https://github.com/flaviofilipe/node-blog-api/blob/main/postman_collection.json)
+- Create variable *host* on postman enviroments pointing to `http://localhost:8000/api`
+
+**Login**
+- Access Auth/Login to login and set token in variables
