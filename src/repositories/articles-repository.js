@@ -1,7 +1,8 @@
 const Respository = require('./repository')
 
 class ArticlesRepository extends Respository {
-  async all() {
+  async all({ category }) {
+    let filter = null
     const join = '[category as c, author as a]'
     const select = [
       'c.name as category',
@@ -10,7 +11,10 @@ class ArticlesRepository extends Respository {
       'summary',
     ]
 
-    return await this.dbAdapter.all(select, join)
+    if(category)
+      filter = ['c.name', 'like', `%${category}%`]
+
+    return await this.dbAdapter.all(select, join, filter)
   }
 
   async getById(id, user) {
