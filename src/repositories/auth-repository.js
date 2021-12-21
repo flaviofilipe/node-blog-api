@@ -37,7 +37,8 @@ class AuthRepository {
   }
 
   async register(data) {
-    return data
+    const user = await this.dbAdapter.create(data)
+    return user
   }
 }
 

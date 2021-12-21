@@ -5,6 +5,7 @@ class ArticlesRepository extends Respository {
     let filter = null
     const join = '[category as c, author as a]'
     const select = [
+      'articles.id',
       'c.name as category',
       'a.name as author_name', 'a.pictureUrl as author_image',
       'title',
